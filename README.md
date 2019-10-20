@@ -67,7 +67,7 @@ How to deploy an Laravel app (v. 6.x.x) on Infomaniak shared hosting
 - `git pull`
 - `composer install`
 - `php artisan migrate`
-- Restart FPM `echo "" | sudo -S service php7.1-fpm reload`
+- Restart FPM (optional) `echo "" | sudo -S service php7.3-fpm reload`
 - Restart queue (optional) `php artisan queue:restart`
 - Clear cache (optional) `php artisan cache:clear`
 
