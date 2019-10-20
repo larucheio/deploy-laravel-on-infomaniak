@@ -4,12 +4,12 @@ How to deploy an Laravel app (v. 6.x.x) on Infomaniak shared hosting
 
 ## Prepare site & access on Infomaniak
 
-- [ ] Create a site on Infomaniak
-- [ ] Create an SSH access for this site
+- Create a site on Infomaniak
+- Create an SSH access for this site
 
 ## Configure the hosting
 
-- [ ] PHP version should be >= 7.2 (ideally 7.3)
+- PHP version should be >= 7.2 (ideally 7.3)
 
 ### Install Composer
 
