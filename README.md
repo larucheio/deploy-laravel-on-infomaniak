@@ -83,6 +83,11 @@ Set in `.env` file the following variable:
 XDG_CONFIG_HOME=./.psysh
 ```
 
+**Manually create user using Tinker**
+```sql
+DB::table('users')->insert(['name'=>'MyUsername','email'=>'thisis@myemail.com','password'=>Hash::make('123456')])
+```
+
 ---
 
 ## Infomaniak Support FAQ
