@@ -1,30 +1,14 @@
-# Deploy Laravel on Infomaniak
+# Deploy Laravel on Infomaniak shared hosting
 
-How to deploy an Laravel app (v. 6.x.x) on Infomaniak shared hosting
+How to deploy a Laravel app (v. 8.x.x) on Infomaniak shared hosting
 
-## Prepare site & access on Infomaniak
+## Prepare site, database & access on Infomaniak
 
 - Create a site on Infomaniak
+- PHP version should be >= 7.3 (ideally 7.4) - [Laravel Server Requirements](https://laravel.com/docs/8.x#server-requirements)
+- Enable `proc_open` for the site (https://www.infomaniak.com/en/support/faq/173/enabling-shell-exec-proc-open-etc-functions)
 - Create an SSH access for this site
-
-## Configure the hosting
-
-- PHP version should be >= 7.2 (ideally 7.3)
-- Enable `proc_open` (https://www.infomaniak.com/en/support/faq/173/enabling-shell-exec-proc-open-etc-functions)
-
-### Install Composer
-
-1. SSH to Infomaniak: `ssh user@host -P`
-1. `cd ~`
-1. `mkdir .composer`
-1. `export COMPOSER_HOME="~/.composer"`
-1. `curl -sS https://getcomposer.org/installer | php -d allow_url_fopen=On`
-
-> To allow the launch of Composer from everywhere, type `export PATH=$PATH:/composerPath` where composerPath is given at the install
-
-> If you want to type `composer` instead of `composer.phar`, move to the composer directory and type `mv composer.phar composer`
-
-> More: https://www.infomaniak.com/fr/support/faq/2118/installer-composer-sur-un-hebergement-web-ou-un-serveur-cloud
+- Create a database with associated user
 
 ## Upload your Laravel app
 
@@ -48,6 +32,7 @@ How to deploy an Laravel app (v. 6.x.x) on Infomaniak shared hosting
 1. `composer install`
 1. `php artisan key:generate`
 1. `php artisan migrate:fresh --seed`
+1. `php artisan storage:link`
 
 ## Optimization
 
@@ -74,6 +59,29 @@ How to deploy an Laravel app (v. 6.x.x) on Infomaniak shared hosting
 
 ### Up the site
 `php artisan up`
+
+---
+
+## Issues
+
+**Force HTTPS**
+
+Add the following line to the `public/.htaccess`
+```
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+```
+
+**Index column size too large**
+
+Migrate MySQL version to 5.7+
+
+**Can't use Tinker**
+
+Set in `.env` file the following variable:
+```
+XDG_CONFIG_HOME=./.psysh
+```
 
 ---
 
