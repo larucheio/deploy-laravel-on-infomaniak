@@ -25,10 +25,9 @@ How to deploy a Laravel app (v. 8.x.x) on Infomaniak shared hosting
 - PHP version should be >= 7.3 (ideally 7.4) - [Laravel Server Requirements](https://laravel.com/docs/8.x/deployment#server-requirements)
 - Enable `proc_open` for the site (https://www.infomaniak.com/en/support/faq/173/enabling-shell-exec-proc-open-etc-functions)
 
-## Update the .env file with the correct info
+## Laravel - Fresh start
 
-## Configure Laravel
-
+1. Create the .env file with the correct info
 1. `composer install`
 1. `php artisan key:generate`
 1. `php artisan migrate:fresh --seed`
@@ -39,8 +38,9 @@ How to deploy a Laravel app (v. 8.x.x) on Infomaniak shared hosting
 - `composer install --optimize-autoloader --no-dev`
 - `php artisan config:cache`
 - `php artisan route:cache`
+- `php artisan view:cache`
 
-> More https://laravel.com/docs/6.x/deployment
+> More https://laravel.com/docs/8.x/deployment
 
 ---
 
