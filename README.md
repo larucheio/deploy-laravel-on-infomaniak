@@ -1,6 +1,6 @@
 # Deploy Laravel on Infomaniak shared hosting
 
-How to deploy a Laravel app (v. 8.x.x) on Infomaniak shared hosting
+How to deploy a Laravel app on Infomaniak shared hosting
 
 ## Infomaniak - SSH & Database
 - Create an SSH access
